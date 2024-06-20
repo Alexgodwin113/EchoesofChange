@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Echoes of Change Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: linear-gradient(to right, #B3D7FF, #33a8ff); /* Blue gradient */           
+            color: #333; /* Dark grey text */
+       
+        }
+        h1 {
+            text-align: center;
+            color: #007bff; /* Blue color for the title */
+        }
+        #chatbot-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff; /* White background for the container */
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Soft shadow around the container */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+        }
+        #chat-log {
+            height: 700px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #e9ecef; /* Light grey background for chat log */
+            border-radius: 5px; /* Rounded corners for chat log */
+        }
+        #user-input {
+            width: 80%;
+            padding: 5px;
+            border: 1px solid #ccc; /* Border for input */
+            border-radius: 5px; /* Rounded corners for input */
+        }
+        #send-button {
+            padding: 5px 10px;
+            background-color: #007bff; /* Blue background for send button */
+            color: #fff; /* White text for send button */
+            border: none;
+            border-radius: 5px; /* Rounded corners for send button */
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+        #send-button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        p {
+            margin: 5px 0; /* Spacing between messages */
+        }
+        strong {
+            color: #007bff; /* Blue color for names */
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbot-container">
+        <h1>Echoes of Change Chatbot</h1>
+        <div id="chat-log">
+            <p><strong>Zeno:</strong> {{ initial_message }}</p>
+        </div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+    
+    <script>
+        const chatLog = document.getElementById('chat-log');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+
+        // Send initial request to get the default response
+        fetch('/chatbot/', {
+            method: 'GET',
+        })
+        .then(response => response.json())
+        .then(data => {
+            chatLog.innerHTML += `<p><strong>Zeno:</strong> ${data.response}</p>`;
+        });
+
+        sendButton.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (event) => {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const userMessage = userInput.value;
+            chatLog.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+            userInput.value = '';
+
+            fetch('/chatbot/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}',
+                },
+                body: `user_input=${encodeURIComponent(userMessage)}`,
+            })
+            .then(response => response.json())
+            .then(data => {
+                chatLog.innerHTML += `<p><strong>Zeno:</strong> ${data.response}</p>`;
+                chatLog.scrollTop = chatLog.scrollHeight;
+            });
+        }
+    </script>
+</body>
+</html>

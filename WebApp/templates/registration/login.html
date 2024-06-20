@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load socialaccount %} 
+{% block content %}
+    <div class="login_mainDiv">
+        <div  class="login" >
+            <h1 class="login_heading">Login</h1>
+            <form method="post" action="{% url 'login' %}" style="text-align: center;">
+                {% csrf_token %}
+                <span class="login_error">{{ form.non_field_errors }}</span>
+                <input type="text" name="username" placeholder="Username" required="required" class="login_input" /><br/>
+                <input type="password" name="password" placeholder="Password" required="required"  class="login_input" /><br/>
+                <button type="submit" class="btn btn-primary btn-block btn-large login_button" >Log In</button>
+            </form>
+                        
+                <button type="button" class="login-with-google-btn" >
+                    Continue with Google
+                </button>
+
+            <div  style="margin-top: 20px;">
+                <a href="{% url 'user_signup' %}" class="login_a">Don't have an account? Signup here</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

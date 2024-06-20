@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block hero %}
+    <div class="hero-container" style= "background-image:url('../Design Images/globe.jpeg')">
+        <div class="counter-container">
+            <div id="organizationCounter" class="counter">0
+                <script src="{% static 'js/counter.js' %}"></script>
+            </div>
+        </div>
+        <h2>
+            Organizations have joined us on our mission so far.
+        </h2>
+    </div>
+{% endblock hero%}
+
+
+
+{% block content %}
+
+    <section class="org-list">
+        {% if org_list %}
+            {% for org in org_list %}
+            <div class="org-card">
+                    {% if org.image %}
+                        <img src="{{ org.image.url }}" alt="{{ org.name }}">
+                    {% endif %}
+                    <div class="org-card-text">
+                        <h2>{{ org.name }}</h2>
+                        <p>{{ org.description }}</p>
+                    </div>
+                    
+                    <div class=" btn-container">
+                        <button class="btn-learnmore" onclick="location.href='{% url 'organization_details' pk=org.user_id %}'">Learn More</button>
+                    </div>  
+            </div>  
+            {% endfor %}
+            
+        {% else %}
+            <p>No Organizations available.</p>
+        {% endif %}
+    </section>
+{% endblock content %}
+
+
+

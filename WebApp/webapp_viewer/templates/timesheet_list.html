@@ -1,0 +1,20 @@
+<!-- timesheet_list.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>My Timesheets</h1>
+{% if timesheets %}
+<ul>
+    {% for timesheet in timesheets %}
+    <li>
+        <a href="{% url 'timesheet_detail' timesheet.id %}">
+            {{ timesheet.opportunity.title }} - {{ timesheet.get_status_display }} - {{ timesheet.hours }} hours
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You have not submitted any timesheets yet.</p>
+{% endif %}
+{% endblock %}

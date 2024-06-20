@@ -1,0 +1,74 @@
+{% block content %}
+<h2>Chat with {{ other_user.username }}</h2>
+
+<div id="chat-messages">
+    {% for message in messages %}
+    <div class="message {% if message.sender == request.user %}sent{% else %}received{% endif %}">
+        <span class="sender">{{ message.sender.username }}</span>
+        <span class="content">{{ message.content }}</span>
+    </div>
+    {% endfor %}
+</div>
+
+<div id="chat-input">
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <button id="send-button">Send</button>
+</div>
+
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+<script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('32879a32b6711d976bbd', {
+        cluster: 'eu',
+        forceTLS: true
+    });
+
+    console.log('Pusher instance created');
+
+    var channel = pusher.subscribe('chat_{{ other_user.username }}');
+    console.log('Subscribed to channel');
+    
+    channel.bind('new_message', function(data) {
+        console.log('Received message:', data);
+        var messageDiv = document.createElement('div');
+       messageDiv.classList.add('message');
+       if (data.sender === '{{ request.user.username }}') {
+           messageDiv.classList.add('sent');
+       } else {
+           messageDiv.classList.add('received');
+       }
+
+       var senderSpan = document.createElement('span');
+       senderSpan.classList.add('sender');
+       senderSpan.textContent = data.sender;
+
+       var contentSpan = document.createElement('span');
+       contentSpan.classList.add('content');
+       contentSpan.textContent = data.message;
+
+       messageDiv.appendChild(senderSpan);
+       messageDiv.appendChild(contentSpan);
+
+        messageDiv.textContent = `${data.sender}: ${data.message}`;
+       document.getElementById('chat-messages').appendChild(messageDiv);
+   });
+
+   document.getElementById('send-button').addEventListener('click', function() {
+       var messageInput = document.getElementById('message-input');
+       var message = messageInput.value.trim();
+
+       if (message) {
+           var data = {
+               'message': message,
+               'sender': '{{ request.user.username }}',
+               'receiver': '{{ other_user.username }}'
+           };
+
+           channel.trigger('client-send_message', data);
+           messageInput.value = '';
+       }
+   });
+</script>
+{% endblock %}

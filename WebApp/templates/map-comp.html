@@ -1,0 +1,81 @@
+<div id="map" style="width: 100%; height: 598px; border-radius: 8px;"></div>
+<!-- 
+    <input type="text" id="location-input" placeholder="Enter a city/town">
+    <button id="search-btn">Search Opportunities</button>
+
+    <div id="map"></div>
+    < class="opportunity-list" id="opportunity-list"></ul> -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let map;
+
+    function initMap() {
+        const guildfordUK = { lat: 51.2362, lng: -0.5704 };
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: guildfordUK, // Default center to Guildford, UK
+            zoom: 12,
+        });    
+        // Initialize Google Places Autocomplete
+        const input = document.getElementById('location-input');
+        input.value = "Guildford, UK";  
+        const autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+    
+        // Listen for the selection of a place from the Autocomplete dropdown
+        autocomplete.addListener('place_changed', function() {
+            const place = autocomplete.getPlace();
+            if (!place.geometry) {
+                console.log("Returned place contains no geometry");
+                return;
+            }
+            
+            // Adjust map bounds to the selected place
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17); // Why not zoom in a bit when a place is selected?
+            }
+    
+            // Clear previous markers and list items
+            $('#opportunity-list').empty();
+            
+            new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+            });
+    
+        fetchAndDisplayOpportunities(map);
+        });
+        fetchAndDisplayOpportunities(map);
+
+}
+
+function fetchAndDisplayOpportunities(map) {
+    fetch('/opportunities/json/')  // Adjust the path to your actual endpoint
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(opportunity => {
+                const position = new google.maps.LatLng(opportunity.latitude, opportunity.longitude);
+                const marker = new google.maps.Marker({
+                    position: position,
+                    map: map,
+                    title: opportunity.title,
+                });
+                
+                const contentString = `<h3>${opportunity.title}</h3>  <p>@ ${opportunity.location}</p>`;
+
+                const infowindow = new google.maps.InfoWindow({
+                    content: contentString,
+                });
+
+                marker.addListener('click', () => {
+                    infowindow.open(map, marker);
+                });
+            });
+        })
+        .catch(error => console.log('Error:', error));
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoXsss2PvgjosKDqAdncVBEyyUtGv3stU&libraries=places&callback=initMap" ></script>

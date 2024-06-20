@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block hero %}
+    <div class="hero-container" style="background-image:url('{{ organization.image.url }}')">
+    </div>
+{% endblock hero %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<section class="org-detail">
+    <h1>{{ organization.name }}</h1>
+    <div class="detail-card">
+        <div class="detail-card-content">
+            <i class="fa-solid fa-pen"></i>
+            <p><strong>Description:</strong> {{ organization.description }}</p>
+        </div>
+    </div>
+    <div class="detail-card">
+        <div class="detail-card-content">
+            <i class="fa-solid fa-location-dot"></i>
+            <p><strong>Location:</strong> {{ organization.location }}</p>
+        </div>
+    </div>
+    <div class="detail-card">
+        <div class="detail-card-content">
+            <i class="fa-solid fa-clipboard-question"></i>
+            <p><strong>Causes:</strong> {{ organization.causes }}</p>
+        </div>
+    </div>
+    <div class="detail-card">
+        <div class="detail-card-content">
+            <i class="fa-solid fa-award"></i>
+            <p><strong>Awards:</strong> {{ organization.awards }}</p>
+        </div>
+    </div>
+    <div class="detail-card">
+        <div class="detail-card-content">
+            <i class="fa-solid fa-address-card"></i>
+            <p><strong>Website:</strong> <a href="{{ organization.website }}">{{ organization.website }}</a></p> 
+        </div>
+    </div>
+    <div class="detail-card">
+        <div class="detail-card-content">
+            <i class="fa-solid fa-address-card"></i>
+            <p><strong>Email:</strong> <a href="mailto:{{ organization.email }}">{{ organization.email }}</a></p> 
+        </div>
+    </div>
+
+    <!-- Reviews Section -->
+<div class="review-section">
+    <h2>Reviews:</h2>
+    <div>
+        {% for rev in reviews %}
+            <div class="review-container">
+                <div class="review-info">
+                    <p class="user-info">User: {{ rev.user }}</p>
+                    <p class="rating">Rating: {{ rev.rating }}</p>
+                </div>
+                <p class="comment">Comment: {{ rev.comment }}</p>
+            </div>
+        {% empty %}
+            <p>No reviews yet.</p>
+        {% endfor %}
+    </div>
+</div>
+<!-- End of Reviews Section -->
+
+    <!-- Add Review Form -->
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Review</button>
+        </form>
+    {% else %}
+        <p>Please <a href="{% url 'login' %}">login</a> to leave a review.</p>
+    {% endif %}
+    <!-- End of Add Review Form -->
+
+    <!-- Back to Organization List Link -->
+    <a href="{% url 'organization_list' %}">Back to Organization List</a>
+
+    <!-- Update Link (if user is organization owner) -->
+    {% if user.is_authenticated and user == organization.user %}
+        <a href="{% url 'organization_update' pk=organization.user_id %}">Update</a>
+    {% endif %}
+</section>
+{% endblock content %}

@@ -1,0 +1,132 @@
+
+@import 'colours';
+
+.container {
+    font-family: $font;
+    color: $text-colour;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+
+    .panel {
+        border: none;
+        background: $light-colour;
+        border-radius: 8px;
+
+        .panel-heading {
+            background-color: $primary-blue;
+            color: #fff;
+            padding: 10px 15px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .glyphicon {
+                margin-right: 10px;
+            }
+        }
+
+        .panel-body {
+            padding: 15px;
+            background-color: #fff;
+            height: 400px;
+            overflow-y: scroll;
+
+            ul.chat {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    margin-bottom: 10px;
+                    display: flex;
+
+                    .chat-img {
+                        width: 50px;
+                        margin-right: 10px;
+
+                        img {
+                            width: 100%;
+                            border-radius: 50%;
+                            background-color: $gold-colour;
+                        }
+                    }
+
+                    .chat-body {
+                        background: $light-colour;
+                        padding: 10px;
+                        border-radius: 8px;
+                        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+                        flex: 1;
+
+                        .header {
+                            margin-bottom: 5px;
+
+                            .primary-font {
+                                font-weight: bold;
+                            }
+
+                            small {
+                                float: right;
+                                color: $secondary-colour;
+                            }
+                        }
+
+                        p {
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .panel-footer {
+            background-color: $primary-blue;
+            padding: 10px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+
+            .input-group {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-bottom: 10px;
+                flex-direction: row;
+                width: 100%;
+
+                input[type="text"] {
+                    box-shadow: none;
+                    background-color: white;
+                    width: 100%;
+                    font-size: 20px;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    padding: 2px;
+                }
+
+                &::placeholder {
+                    color: rgba(#575756, 0.8);
+                    text-transform: uppercase;
+                    letter-spacing: 1.5px;
+                }
+
+                button {
+                    background-color: $gold-colour;
+                    color: #fff;
+                    border: none;
+                    padding: 10px 15px;
+                    border-radius: 4px;
+                    transition: background-color 0.3s;
+                    margin-left: 4px;
+
+                    &:hover {
+                        background-color: darken($gold-colour, 10%);
+                    }
+                }
+            }
+        }
+    }
+}

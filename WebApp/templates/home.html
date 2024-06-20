@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block title %}
+{% load static %}
+
+{% endblock title%}
+
+
+
+{% block hero %}
+    <div class="hero-container" style= "background-image:url('../Design Images/backgound.jpg')">
+       <h1>Sign Up to Be the Echo of Change </h1>
+        <div class=" btn-container">
+            <button class="btn-applynow" onclick="location.href='{% url 'signup' %}'">JOIN US</button>
+        </div>
+    </div>
+{% endblock hero%}
+
+
+{% block content %}
+    <div class="about-section">
+        <div class="container">
+            <h1>About US</h1>
+        </div>
+        <div class="about-card"> 
+            <p> Welcome to Echoes of Change, where we connect volunteers with opportunities to make a real difference. 
+                Our mission is to simplify volunteering, making it accessible and rewarding for everyone. 
+                With features like our community impact leaderboard and smart matching algorithm, we ensure your skills and interests align with the right causes. 
+                Join us, and be part of a community that's changing the world, one volunteer hour at a time.
+        </p> 
+        </div>
+    </div>
+    <div class="stats-section">
+        <div class="stat-card"> 
+            <div class="counter-container">
+                <div id="opportunityCounter" class="counter">0
+                    <script src="{% static 'js/counter.js' %}"></script>
+                </div>
+            </div>
+            <div class="text-cont">
+                <h5>
+                    Opportunities are AVAILABLE
+                </h5>
+            </div>
+        </div>
+        <div class="stat-card"> 
+            <div class="counter-container">
+                <div id="organizationCounter" class="counter">0
+                    <script src="{% static 'js/counter.js' %}"></script>
+                </div>
+            </div>
+            <div class="text-cont">
+                <h5>
+                    Organizations have joined us
+                </h5>
+            </div>
+        </div>
+        <div class="stat-card"> 
+            <div class="counter-container">
+                <div id="opportunityCounter" class="counter">£545
+                    <script src="{% static 'js/counter.js' %}"></script>
+                </div>
+            </div>
+            <div class="text-cont">
+                <h5>
+                    Funds Raised
+                </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="map-cont">
+        <div class="search-bar">
+            <div class="text">
+               FIND AN OPPORTUNITY NEAR YOU
+            </div>
+         
+            <div class="search__input">
+                <input type="text" id="location-input" placeholder="Enter a city/town">
+            </div>
+            <!-- <p class="opportunity-list" id="opportunity-list"></p>    -->
+        </div>
+        <div class="map">
+             {%include 'map-comp.html'%}
+        </div>
+    </div>
+
+    <div class="text-container">
+        <h4>
+            BE PART OF A COMMUNITY
+        </h4>
+    </div>
+
+    <div class="chat-ctn">
+        {%include 'chat-comp.html'%}
+    </div>
+
+
+
+{% endblock content %}

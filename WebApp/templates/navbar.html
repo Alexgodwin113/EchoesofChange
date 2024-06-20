@@ -1,0 +1,39 @@
+<body>
+  <ul class="menu">
+      <span class="leftmenu">
+          <div class="logo">
+              <img src="/Design Images/transparent-logo.png" alt="{{ comp.logo }}" class="logo-img"/>
+          </div>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'opportunity_list' %}">Opportunities</a></li>
+          <li><a href="{% url 'organization_list' %}">Organizations</a></li>
+          <li><a href="{% url 'about'  %}"> About </a></li>
+          <li><a href="{% url 'buy' %}">Products</a></li>
+          <li><a href="{% url 'donation' %}">Donation</a></li>
+          <li><a href="{% url 'chatbot' %}">Chatbot</a></li>
+
+
+      </span>
+      <span class="rightmenu">
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'leaderboard' %}">Leaderboard</a></li>
+              {% if user.userprofile.hours >= 0 %}
+              
+                  <li><a href="{% url 'user_detail' %}">User Profile</a></li>
+              {% else %}
+                  <li><a href="{% url 'organization_profile' %}">Organization Profile</a></li>
+              {% endif %}
+              <li>
+                <form id="logoutForm" method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                    <a href="#" onclick = "document.getElementById('logoutForm').submit();">Logout</a>
+                </form>
+            </li>
+
+          {% else %}
+              <li><a href="{% url 'signup' %}">Signup</a></li>
+              <li><a href="{% url 'login' %}">Login</a></li>
+          {% endif %}
+      </span>
+  </ul> 
+</body>

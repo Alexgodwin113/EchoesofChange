@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <title>{{ opportunity.title }}</title>
+    <style>
+        /* Adjust the image size */
+        img {
+            max-width: 300px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1>{{ opportunity.title }}</h1>
+                {% if messages %}
+                <div class="alert alert-success" style="color: green;">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+                </div>
+                {% endif %}
+                <img src="{{ opportunity.images.url }}" alt="{{ opportunity.title }} Image" class="img-fluid">
+                <ul class="list-unstyled">
+                    <li><strong>Description:</strong> {{ opportunity.description }}</li>
+                    <li><strong>Category:</strong> {{ opportunity.category }}</li>
+                    <li><strong>Impact Score:</strong> {{ opportunity.impact_score }}</li>
+                    <li><strong>Start Date:</strong> {{ opportunity.start_date }}</li>
+                    <li><strong>End Date:</strong> {{ opportunity.end_date }}</li>
+                    <li><strong>Total Hours:</strong> {{ opportunity.total_hours }}</li>
+                    <li><strong>Location:</strong> {{ opportunity.location }}</li>
+                    <li><strong>Created Time:</strong> {{ opportunity.created_time }}</li>
+                    <li>
+                        <strong>Required Skills:</strong>
+                        <ul>
+                            {% for skill in opportunity.required_skills.all %}
+                            <li>{{ skill.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Disability Inclusive:</strong>
+                        <ul>
+                            {% for disability in opportunity.disability_inclusive.all %}
+                            <li>{{ disability.name }}</li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                <a href="{% url 'submit_volunteer_hours' opportunity_id=opportunity.id %}" class="btn btn-primary">Submit Hours</a>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock content %}

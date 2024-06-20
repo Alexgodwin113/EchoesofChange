@@ -1,0 +1,58 @@
+@import 'colours';
+
+.stats-section{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: $primary-blue;
+
+    .stat-card{
+        flex-basis:45%;
+        padding: 20px;
+        border-radius:8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        background-color: $light-colour;
+        margin-left: 3px;
+        margin-right: 3px;
+        min-height: 280px;
+
+        .counter-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            
+            .counter{
+            color: $gold-colour;
+            font-size: 140px;
+            font-weight: bold;
+            font-family: $font;
+            text-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+        }
+
+        .text-cont{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            align-self: flex-end;
+            
+            h5{
+                font-size: 20px;
+                color: black;
+                padding: none;
+            }
+        }
+    }
+
+    h1{
+        font-size: 100px;
+        flex-basis: 45%;
+    }   
+    
+}

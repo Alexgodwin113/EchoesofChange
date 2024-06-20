@@ -1,0 +1,11 @@
+<!-- timesheet_detail.html -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Timesheet Details</h1>
+<p>Organization: {{ timesheet.organization.name }}</p>
+<p>Opportunity: {{ timesheet.opportunity.title }}</p>
+<p>Hours: {{ timesheet.hours }}</p>
+<p>Status: {{ timesheet.get_status_display }}</p>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block hero %}
+    <div class="hero-container" style= "background-image:url('../Design Images/Leaderboard2.jpg')">
+    </div>
+{% endblock hero%}
+
+
+{% block content %}
+    <h1 style="text-align: center;">Leaderboard</h1>
+    <div style="margin: auto; width: 50%;">
+        <form method="post" style="display: flex; justify-content: center; align-items: center; margin-bottom: 20px;">
+            {% csrf_token %}
+            <label for="category" style="margin-right: 10px; font-size: 14px;">Select a category:</label>
+            <!-- Apply CSS styling directly to the select element -->
+            <select name="category" id="category" style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; background-color: #fff; font-size: 14px; width: 150px;">
+                {% for category in categories %}
+                    {% if selected_category == category %}
+                        <option value="{{ category }}" selected>{{ category }}</option>
+                    {% else %}
+                        <option value="{{ category }}">{{ category }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <button type="submit" style="padding: 8px 12px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; font-size: 14px; margin-left: 10px;">Show Leaderboard</button>
+        </form>
+        {% if selected_category %}
+            <h2 style="text-align: center;">Leaderboard for {{ selected_category }}</h2>
+            <ol style="list-style-type: none; padding: 0; text-align: center;">
+                {% for user, impact_score in sorted_users %}
+                    <li style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">{{ user.user.first_name }} ({{ user.location }}) - {{ impact_score }}</li>
+                {% endfor %}
+            </ol>
+        {% endif %}
+    </div>
+{% endblock %}

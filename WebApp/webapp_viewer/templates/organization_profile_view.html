@@ -1,0 +1,85 @@
+<!-- organization_profile.html -->
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %} 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+<div class="orgProfile">
+
+  <div class="row first_row" >
+    <h2><b>Organization Profile</b></h2>
+
+  </div>
+
+  <div class="row" style="width:101%; min-height: 70vh;">
+    <div class="col-sm-4" style="background-color: #ecf0f1;">
+      <img src="{{ organization.image.url }}" class=" my__img rounded-circle" alt="Org img">
+      <h2 class="card-title text-center pt-4" style="margin-top: 100px;"><b>{{ organization.name }}</b></h2>
+
+      <h4 class="mt-3 text-center pt-4"><b>Email : </b></h4>
+      <p class="text-center">{{ organization.email }}</p>
+
+      <h4 class="mt-3 text-center pt-4"><b>Website : </b></h4>
+      <p class="text-center"><a href="{{ organization.website }}">{{ organization.website }}</a></p>      
+
+      <div style="display: flex;justify-content: center;align-items: center; ">
+        {% if user.is_authenticated and user == organization.user %}
+        <button type="button" class="btn  text-center btn-outline-black  " onclick="goToEditView()">Edit
+        </button>
+        {% endif %} 
+      </div>
+    </div>
+
+    <div class="col-sm-8" style="background-color: white;">
+      <div class=" " style="margin-top: 0px; margin-left: 10px;" >
+
+        <h4 class="mt-2 pt-2"><b>About : </b></h4>
+        <p class=" ">{{ organization.description }}</p>
+
+        <h4 class="mt-2 pt-2"><b>Website : </b></h4>
+        <p class=" "><a href="{{ organization.website }}">{{ organization.website }}</a></p>
+
+        <h4 class="mt-2 pt-2"><b>Location : </b></h4>
+        <p class=" ">{{ organization.location }}</p>
+
+        <h4 class="mt-2 pt-2"><b>Awards : </b></h4>
+        <p class=" ">{{ organization.awards }}</p>
+
+        <h4 class="mt-2 pt-2"><b>Causes : </b></h4>
+        <p class="">{{ organization.causes }}</p>
+
+      </div>
+    </div>
+  </div> 
+
+</div>
+
+<h2>Pending Volunteer Hours Approval</h2>
+{% if pending_volunteer_hours %}
+  <ul>
+    {% for volunteer_hour in pending_volunteer_hours %}
+      <li>
+        {{ volunteer_hour.user.user.username }} - {{ volunteer_hour.opportunity.title }} - {{ volunteer_hour.hours }} hours
+        <form method="post">
+          {% csrf_token %}
+          <input type="hidden" name="volunteer_hour_id" value="{{ volunteer_hour.id }}">
+          <button type="submit" name="action" value="approve">Approve</button>
+          <button type="submit" name="action" value="reject">Reject</button>
+        </form>
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No pending volunteer hours for approval.</p>
+{% endif %}
+
+
+<script type="text/javascript">
+  function goToEditView(){
+   document.location.href = "{% url 'organization_update' pk=organization.user_id %}"
+  }
+</script>
+{% endblock content %} 

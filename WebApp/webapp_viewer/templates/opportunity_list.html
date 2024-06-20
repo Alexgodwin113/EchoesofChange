@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Opportunities</title>
+{% endblock title %}
+
+{% block hero %}
+<div class="hero-container" style= "background-image:url('../Design Images/opp-hero.jpg');height: 50%;">
+
+    <div class="counter-container">
+        <div id="opportunityCounter" class="counter-opp">
+            <script src="{% static 'js/counter.js' %}"></script>
+        </div>
+    </div>
+    <h2>OPPORTUNITIES ARE CURRENTLY AVAILABLE!</h2>
+</div>
+{% endblock hero%}
+
+{% block content %}
+
+<div class="map-cont">
+    <div class="search-bar">
+        <div class="text">
+           FIND AN OPPORTUNITY NEAR YOU
+        </div>
+     
+        <div class="search__input">
+            <input type="text" id="location-input" placeholder="Enter a city/town">
+        </div>
+    </div>
+    <div class="map">
+         {%include 'map-comp.html'%}
+    </div>
+</div>
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<div style="background-color: #ecf0f1;">
+    <div class="container" >
+        <h1 style="text-align: center; padding-top: 20px;"><b>Opportunities</b></h1>
+        <div  style="padding-top: 20px; padding-bottom: 20px;">
+            <form>
+                <div class="row">
+                    <div class = "col-sm-6">
+                        <div class="form-group">
+                          <label for="category">Category</label>
+                          <select class="custom-select my-1 mr-sm-2" id="category" name="category">
+                            <option value="">All Categories</option>
+                            {% for category in categories %}
+                            <option value="{{ category }}" {% if request.GET.category == category %}selected{% endif %}>{{ category }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                    </div>
+                    <div class = "col-sm-6">
+                        <div class="form-group">
+                            <label for="start_date">Start Date</label>
+                            <input type="date" id="start_date" class="form-control"  name="start_date" value="{{ request.GET.start_date }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class = "col-sm-6">
+                        <label for="total_hours_min">Minimum Total Hours</label>
+                        <input type="number" id="total_hours_min"  class="form-control"  name="total_hours_min" value="{{ request.GET.total_hours_min }}">
+                    </div>
+                    <div class = "col-sm-6">
+                        <label for="total_hours_max">Maximum Total Hours</label>
+                        <input type="number" id="total_hours_max"  class="form-control"  name="total_hours_max" value="{{ request.GET.total_hours_max }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class = "col-sm-6">
+                        <label for="impact_score_min">Minimum Impact Score</label>
+                        <input type="number" id="impact_score_min"  class="form-control"  name="impact_score_min" value="{{ request.GET.impact_score_min }}">
+                    </div>
+                    <div class = "col-sm-6">
+                        <label for="impact_score_max">Maximum Impact Score</label>
+                        <input type="number" id="impact_score_max"  class="form-control"  name="impact_score_max" value="{{ request.GET.impact_score_max }}">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-3">Filter</button>
+              </form>
+        </div>
+    </div>
+</div>
+
+{% if show_filter_by_skills %}
+<button id="filterBySkills">Filter by My Skills</button>
+{% endif %}
+
+{% if show_filter_by_interests %}
+<button id="filterByInterests">Filter by My Interests</button>
+{% endif %}
+
+<section class="opp-list">
+    {% for opportunity in opportunities %}
+    <div class="opp-card" data-skills="{% for skill in opportunity.required_skills.all %}{{ skill.name }} {% endfor %}" data-interests="{% for interest in opportunity.category.split %}{{ interest }}{% endfor %}">
+        {% if opportunity.images %}
+        <img src="{{ opportunity.images.url}}" alt="{{ opportunity.title }}">
+        {% endif %}
+        <div class="opp-card-text">
+            <h2>{{ opportunity.title }}</h2>
+            <p>{{ opportunity.description }}</p>
+        </div>
+        <div class=" btn-container">
+            <button class="btn-learnmore" onclick="location.href='{% url 'opportunity_detail' opportunity.id %}'">Learn More</button>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% if show_filter_by_skills or show_filter_by_interests %}
+<script>
+    const filterBySkillsBtn = document.getElementById('filterBySkills');
+    const filterByInterestsBtn = document.getElementById('filterByInterests');
+    const oppCards = document.querySelectorAll('.opp-card');
+    const userSkills = [{% for skill in user_skills %}'{{ skill.name }}',{% endfor %}];
+    const userInterests = [{% for interest in user_interests %}'{{ interest.name }}',{% endfor %}];
+
+    filterBySkillsBtn.addEventListener('click', () => {
+        oppCards.forEach(card => {
+            const cardSkills = card.dataset.skills.split(' ');
+            const hasMatchingSkill = cardSkills.some(skill => userSkills.includes(skill));
+            card.style.display = hasMatchingSkill ? 'block' : 'none';
+        });
+    });
+
+    filterByInterestsBtn.addEventListener('click', () => {
+        oppCards.forEach(card => {
+            const cardInterests = card.dataset.interests.split(',');
+            const hasMatchingInterest = cardInterests.some(interest => userInterests.includes(interest));
+            card.style.display = hasMatchingInterest ? 'block' : 'none';
+        });
+    });
+</script>
+{% endif %}
+{% endblock content %}

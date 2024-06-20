@@ -1,0 +1,24 @@
+project_name: Echoes of Change
+
+project_description: |
+  Short description (100 words) 
+
+group_members:
+  - Abhishikth Nallani
+  - Alex Godwin Rajanathan
+  - Atriya Sivakumar
+  - Krish Walia
+  - Manu Malakannavar
+  - Mirabella Myers
+  
+
+group_image: team.jpg
+
+
+User test login:
+user1
+password: userpassword
+
+organisation test login:
+org3
+password: orgpassword

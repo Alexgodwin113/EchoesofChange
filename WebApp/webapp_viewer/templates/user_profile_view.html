@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+<div class="orgProfile">
+
+  <div class="row first_row" >
+    <h2 style="color:#ffffff"><b>User Profile</b></h2>
+  </div>
+
+  <div class="row" style="width:101%; min-height: 70vh;">
+    <div class="col-sm-3" style="background-color: #ecf0f1;">
+      <img src="{{ user_profile.image.url }}" class=" my__img rounded-circle" alt="Org img">
+      <h2 class="card-title text-center pt-4" style="margin-top: 100px;"><b>{{ user_profile.user.username  }}</b></h2>
+
+      <h4 class="mt-3 text-center pt-4"><b>Email : </b></h4>
+      <p class="text-center" style="font-size: large;">{{ user_profile.user.email }}</p>
+
+      <h4 class="mt-3 text-center pt-4"><b>Phone Number : </b></h4>
+      <p class="text-center"  style="font-size: large;">{{ user_profile.phone_number }}</p>
+    </div>
+
+    <div class="col-sm-5" style="background-color: white;">
+      <div class=" " style="margin-top: 0px; margin-left: 10px;" >
+
+        <h4 class="mt-2 pt-2"><b>Bio : </b></h4>
+        <p class=" ">{{ user_profile.bio }}</p>
+
+        <h4 class="mt-2 pt-2"><b>Location : </b></h4>
+        <p class=" ">{{ user_profile.location }}</p>
+
+        <h4 class="mt-2 pt-2"><b>Date of Birth : </b></h4>
+        <p class=" ">{{ user_profile.date_of_birth }}</p>
+
+        <h4 class="mt-2 pt-2"><b>Interests : </b></h4>
+        <p class="">{{ user_profile.interests.all|join:", " }}.</p>
+
+        <h4 class="mt-2 pt-2"><b>Skills : </b></h4>
+        <p class="">{{ user_profile.skills.all|join:", " }}.</p>
+
+        <h4 class="mt-2 pt-2"><b>Disabilities : </b></h4>
+        <p class="">{{ user_profile.disabilities.all|join:", " }}.</p>
+
+        <!-- <h4 class="mt-2 pt-2"><b>Website : </b></h4>
+        <p class=" "><a href="{{ organization.website }}">{{ user_profile.website }}</a></p> -->
+
+      </div>
+    </div>
+
+    <div class="col-sm-4" style="background-color: #ffffff; border-left:3px solid black;"> 
+        <h4 class="mt-3 text-center pt-1 pb-3"><b>Impact Scores by Category</b></h4>
+        <!-- <ul class="list-group mt-3">
+            {% for category, impact_score in category_impact_scores.items %}
+                <li class="list-group-item d-flex justify-content-between align-items-center mt-3">
+                    {{ category }}
+                    <span class="badge badge-primary badge-pill">{{ impact_score }}</span>
+                </li>
+            {% endfor %} 
+          </ul> -->
+          {% for category, impact_score in category_impact_scores.items %}
+          <div class="row mt-3" style="justify-content: center;align-items: center; ">
+            <div class="col-sm-9">
+              <h3> <span class="badge">{{ category }}</span></h3>
+            </div>
+            <div class="col-sm-3">
+              <h4> {{ impact_score }}</h4>
+            </div>
+          </div>
+          {% endfor %} 
+
+    </div>
+  </div>
+
+</div>
+ 
+{% endblock content %}
+

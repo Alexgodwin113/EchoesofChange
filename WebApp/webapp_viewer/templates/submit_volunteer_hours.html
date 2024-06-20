@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>Submit Volunteer Hours</h1>
+            <div class="card">
+                <div class="card-body">
+                    <h2>Opportunity: {{ opportunity.title }}</h2>
+                    <p><strong>Description:</strong> {{ opportunity.description }}</p>
+                    <p><strong>Category:</strong> {{ opportunity.category }}</p>
+                    <p><strong>Start Date:</strong> {{ opportunity.start_date }}</p>
+                    <p><strong>End Date:</strong> {{ opportunity.end_date }}</p>
+                    <p><strong>Total Hours:</strong> {{ opportunity.total_hours }}</p>
+                    <p><strong>Location:</strong> {{ opportunity.location }}</p>
+                    <p>By submitting these hours, you confirm that you have spent this time on this opportunity</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="hours">Hours:</label>
+                    <input type="number" id="hours" name="hours" class="form-control" required>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <br>
+                <br>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

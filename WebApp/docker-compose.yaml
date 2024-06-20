@@ -1,0 +1,9 @@
+services:
+  web:
+    image: group3-echoes
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"

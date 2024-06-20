@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block hero %}
+    <div class="hero-container" style= "background-image:url('../Design Images/shop.jpg')">
+    </div>
+{% endblock hero%}
+
+{% block content %}
+
+
+<script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+<stripe-pricing-table
+  pricing-table-id='prctbl_1P5qLNI9MHBCqysdmZou8cwG'
+  publishable-key="pk_test_51P5mcrI9MHBCqysdus69cBTOZPtfVPMkjIUWwUwlrTnTppfgW4hwth9sdFqDwiHwIUu7iGp9JSBAVBrgnvuyqAZT006Qg8vYaW">
+</stripe-pricing-table>
+{% endblock %}
+

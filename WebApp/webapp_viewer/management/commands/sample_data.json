@@ -1,0 +1,632 @@
+{
+  "UserProfile": [
+    {
+      "user": 1,
+      "image": "profile_pics/user1.jpg",
+      "bio": "I'm passionate about environmental conservation.",
+      "location": "New York",
+      "date_of_birth": "1990-05-15",
+      "phone_number": "123-456-7890",
+      "disabilities": [],
+      "hours": 0,
+      "interests": [1, 2],
+      "skills": [1, 3]
+    },
+    {
+      "user": 2,
+      "image": "profile_pics/user2.jpg",
+      "bio": "Love working with children.",
+      "location": "Los Angeles",
+      "date_of_birth": "1985-10-20",
+      "phone_number": "987-654-3210",
+      "disabilities": [4],
+      "hours": 0,
+      "interests": [3],
+      "skills": [2, 4]
+    },
+    {
+      "user": 3,
+      "image": "profile_pics/user2.jpg",
+      "bio": "Passionate about education and youth empowerment.",
+      "location": "San Francisco",
+      "date_of_birth": "1995-08-25",
+      "phone_number": "555-123-4567",
+      "disabilities": [],
+      "hours": 0,
+      "interests": [2,5],
+      "skills": [1, 2]
+    },
+    {
+      "user": 4,
+      "image": "profile_pics/user2.jpg",
+      "bio": "Dedicated to healthcare accessibility for all.",
+      "location": "Chicago",
+      "date_of_birth": "1980-03-10",
+      "phone_number": "555-987-6543",
+      "disabilities": [],
+      "hours": 0,
+      "interests": [1],
+      "skills": [3, 4]
+    },
+    {
+      "user": 5,
+      "image": "profile_pics/user1.jpg",
+      "bio": "Passionate about wildlife conservation and environmental sustainability.",
+      "location": "New York",
+      "date_of_birth": "1992-11-18",
+      "phone_number": "555-567-8901",
+      "disabilities": [2],
+      "hours": 0,
+      "interests": [3,4],
+      "skills": [1, 5]
+    },
+    {
+      "user": 6,
+      "image": "profile_pics/user1.jpg",
+      "bio": "Advocate for social justice and community empowerment.",
+      "location": "Los Angeles",
+      "date_of_birth": "1988-07-05",
+      "phone_number": "555-234-5678",
+      "disabilities": [1],
+      "hours": 0,
+      "interests": [6,7],
+      "skills": [2, 3]
+    }
+  ],
+  "Organization": [
+    {
+      "user": 3,
+      "name": "Green Earth Foundation",
+      "description": "Working to protect the environment.",
+      "location": "San Francisco",
+      "causes": "Environmental conservation",
+      "image": "organization_images/org1.jpg",
+      "awards": "Environmental Excellence Award, 2020",
+      "website": "https://www.greenearthfoundation.org",
+      "email": "contact@greenearthfoundation.org"
+    },
+    {
+      "user": 4,
+      "name": "Youth Empowerment Society",
+      "description": "Empowering youth through education and mentorship.",
+      "location": "Chicago",
+      "causes": "Youth development",
+      "image": "organization_images/org2.jpg",
+      "awards": "Youth Organization of the Year, 2019",
+      "website": "https://www.youthempowerment.org",
+      "email": "info@youthempowerment.org"
+    },
+    {
+      "user": 5,
+      "name": "Wildlife Conservation Society",
+      "description": "Dedicated to saving wildlife and wild places worldwide.",
+      "location": "New York",
+      "causes": "Wildlife conservation",
+      "image": "organization_images/org3.jpg",
+      "awards": "Global Conservation Award, 2018",
+      "website": "https://www.wcs.org",
+      "email": "info@wcs.org"
+    },
+    {
+      "user": 6,
+      "name": "Food for All",
+      "description": "Providing nutritious meals to those in need.",
+      "location": "Los Angeles",
+      "causes": "Food security",
+      "image": "organization_images/org4.jpg",
+      "awards": "Community Service Award, 2021",
+      "website": "https://www.foodforall.org",
+      "email": "info@foodforall.org"
+    },
+    {
+      "user": 7,
+      "name": "Healthcare for Humanity",
+      "description": "Improving healthcare access and services for underserved populations.",
+      "location": "Houston",
+      "causes": "Healthcare equity",
+      "image": "organization_images/org5.jpg",
+      "awards": "Humanitarian Award, 2017",
+      "website": "https://www.healthcareforhumanity.org",
+      "email": "contact@healthcareforhumanity.org"
+    },
+    {
+      "user": 8,
+      "name": "Education First",
+      "description": "Empowering communities through education and literacy programs.",
+      "location": "Boston",
+      "causes": "Education access",
+      "image": "organization_images/org6.jpg",
+      "awards": "Education Excellence Award, 2019",
+      "website": "https://www.educationfirst.org",
+      "email": "info@educationfirst.org"
+    },
+    {
+      "user": 9,
+      "name": "Renewable Energy Initiative",
+      "description": "Promoting the transition to sustainable and renewable energy sources.",
+      "location": "Seattle",
+      "causes": "Renewable energy advocacy",
+      "image": "organization_images/org7.jpg",
+      "awards": "Renewable Energy Leadership Award, 2020",
+      "website": "https://www.renewableenergyinitiative.org",
+      "email": "contact@renewableenergyinitiative.org"
+    },
+    {
+      "user": 10,
+      "name": "Global Peace Foundation",
+      "description": "Building peace and social cohesion through community development.",
+      "location": "Washington D.C.",
+      "causes": "Peacebuilding",
+      "image": "organization_images/org8.jpeg",
+      "awards": "Global Peace Prize, 2016",
+      "website": "https://www.globalpeacefoundation.org",
+      "email": "info@globalpeacefoundation.org"
+    },
+    {
+      "user": 11,
+      "name": "Art for Change",
+      "description": "Using art as a tool for social change and activism.",
+      "location": "San Diego",
+      "causes": "Social justice",
+      "image": "organization_images/org9.jpg",
+      "awards": "Artistic Innovation Award, 2018",
+      "website": "https://www.artforchange.org",
+      "email": "info@artforchange.org"
+    },
+    {
+      "user": 12,
+      "name": "Animal Rescue League",
+      "description": "Rescuing and rehabilitating animals in need.",
+      "location": "Philadelphia",
+      "causes": "Animal welfare",
+      "image": "organization_images/org10.jpg",
+      "awards": "Animal Advocate Award, 2021",
+      "website": "https://www.animalrescueleague.org",
+      "email": "contact@animalrescueleague.org"
+    }
+  ],
+
+  "Opportunity": [
+    {
+      "organization": 3,
+      "title": "Beach Cleanup",
+      "description": "Join us for a beach cleanup event.",
+      "category": "Environmental",
+      "impact_score": 20,
+      "required_skills": [4, 3],
+      "start_date": "2024-03-15",
+      "end_date": "2024-03-16",
+      "total_hours": 5,
+      "images": "opportunity_images/opp1.jpg",
+      "location": "Beach area",
+      "disability_accessibility": [2],
+      "latitude": 50.7756,
+      "longitude": -0.9060
+    },
+    {
+      "organization": 4,
+      "title": "Tutoring Program",
+      "description": "Volunteer to tutor underprivileged children.",
+      "category": "Education",
+      "impact_score": 15,
+      "required_skills": [2, 4],
+      "start_date": "2024-03-20",
+      "end_date": "2024-04-20",
+      "total_hours": 10,
+      "images": "opportunity_images/opp2.jpeg",
+      "location": "Local community center",
+      "disability_accessibility": [2],
+      "latitude": 51.2383,
+      "longitude": -0.5737
+    },
+    {
+      "organization": 5,
+      "title": "Wildlife Conservation Expedition",
+      "description": "Join our team on an expedition to protect endangered species.",
+      "category": "Environmental",
+      "impact_score": 30,
+      "required_skills": [1, 5],
+      "start_date": "2024-04-10",
+      "end_date": "2024-04-20",
+      "total_hours": 20,
+      "images": "opportunity_images/opp3.jpg",
+      "location": "Wildlife reserve",
+      "disability_accessibility": [4],
+      "latitude": 51.268181,
+      "longitude": -0.300536
+    },
+    {
+      "organization": 6,
+      "title": "Community Garden Project",
+      "description": "Join us in establishing and maintaining a community garden to promote sustainable urban agriculture.",
+      "category": "Environmental",
+      "impact_score": 25,
+      "required_skills": [1, 3],
+      "start_date": "2024-04-05",
+      "end_date": "2024-05-05",
+      "total_hours": 15,
+      "images": "opportunity_images/opp4.jpg",
+      "location": "Urban community garden area",
+      "disability_accessibility": [],
+      "latitude": 51.2153,
+      "longitude": -0.6057
+    },
+    {
+      "organization": 7,
+      "title": "Homeless Shelter Assistance",
+      "description": "Volunteer at a local homeless shelter, providing support services and assistance to individuals experiencing homelessness.",
+      "category": "Social Welfare",
+      "impact_score": 20,
+      "required_skills": [2, 6],
+      "start_date": "2024-04-01",
+      "end_date": "2024-04-30",
+      "total_hours": 12,
+      "images": "opportunity_images/opp5.jpg",
+      "location": "Homeless shelter facility",
+      "disability_accessibility": [],
+      "latitude": 51.24046771753882,
+      "longitude": -0.5763158430478699
+    },
+    {
+      "organization": 8,
+      "title": "River Cleanup Expedition",
+      "description": "Join our team on an expedition to clean up rivers and waterways, promoting environmental conservation and habitat protection.",
+      "category": "Environmental",
+      "impact_score": 35,
+      "required_skills": [4, 5],
+      "start_date": "2024-04-15",
+      "end_date": "2024-05-15",
+      "total_hours": 25,
+      "images": "opportunity_images/opp6.jpg",
+      "location": "Various riverbanks and waterways",
+      "disability_accessibility": [],
+      "latitude": 51.23043461207195,
+      "longitude": -0.5724890016703483
+    },
+    {
+      "organization": 7,
+      "title": "Tree Planting Event",
+      "description": "Join us in planting trees to promote reforestation and combat climate change.",
+      "category": "Environmental",
+      "impact_score": 15,
+      "required_skills": [13],
+      "start_date": "2024-05-01",
+      "end_date": "2024-05-01",
+      "total_hours": 6,
+      "images": "opportunity_images/opp7.jpg",
+      "location": "Local park",
+      "disability_accessibility": [],
+      "latitude": 51.2153,
+      "longitude": -0.6057
+    },
+    {
+      "organization": 3,
+      "title": "Park Cleanup",
+      "description": "Help clean up a local park to preserve its natural beauty and protect wildlife habitats.",
+      "category": "Environmental",
+      "impact_score": 10,
+      "required_skills": [13],
+      "start_date": "2024-05-10",
+      "end_date": "2024-05-10",
+      "total_hours": 4,
+      "images": "opportunity_images/opp8.jpg",
+      "location": "City park",
+      "disability_accessibility": [],
+      "latitude": 51.23122037345799,
+      "longitude": -0.5595690605407011
+
+    },
+    {
+      "organization": 8,
+      "title": "STEM Workshop for Kids",
+      "description": "Volunteer to assist with a STEM (Science, Technology, Engineering, Mathematics) workshop for children to inspire interest in these fields.",
+      "category": "Educational",
+      "impact_score": 20,
+      "required_skills": [2],
+      "start_date": "2024-05-05",
+      "end_date": "2024-05-05",
+      "total_hours": 8,
+      "images": "opportunity_images/opp9.jpg",
+      "location": "Local school",
+      "disability_accessibility": [1,2,3],
+      "latitude": 51.23949782946825,
+      "longitude": -0.5732311504211163
+    },
+    {
+      "organization": 8,
+      "title": "Adult Literacy Program",
+      "description": "Support adult learners in improving their literacy skills through tutoring and mentoring.",
+      "category": "Educational",
+      "impact_score": 25,
+      "required_skills": [2],
+      "start_date": "2024-05-15",
+      "end_date": "2024-06-15",
+      "total_hours": 20,
+      "images": "opportunity_images/opp10.jpg",
+      "location": "Community library",
+      "disability_accessibility": [2,3],
+      "latitude": 51.2303032382251,
+      "longitude": -0.5726326564792595
+    },
+    {
+      "organization": 7,
+      "title": "Medical Outreach Program",
+      "description": "Assist in providing medical care and health education to underserved communities through a mobile outreach program.",
+      "category": "Health Care",
+      "impact_score": 30,
+      "required_skills": [2],
+      "start_date": "2024-05-20",
+      "end_date": "2024-06-20",
+      "total_hours": 30,
+      "images": "opportunity_images/opp11.jpeg",
+      "location": "Various communities",
+      "disability_accessibility": [],
+      "latitude": 51.235600115457366,
+      "longitude": -0.57562990483738
+    },
+    {
+      "organization": 7,
+      "title": "Blood Donation Drive",
+      "description": "Participate in a blood donation drive to help save lives and support healthcare services.",
+      "category": "Health Care",
+      "impact_score": 10,
+      "required_skills": [8],
+      "start_date": "2024-06-01",
+      "end_date": "2024-06-01",
+      "total_hours": 3,
+      "images": "opportunity_images/opp12.jpg",
+      "location": "Local community center",
+      "disability_accessibility": [],
+      "latitude": 51.241163000394096,
+      "longitude": -0.608523264703522
+      
+    },
+    {
+      "organization": 12,
+      "title": "Animal Shelter Volunteer",
+      "description": "Volunteer at an animal shelter, assisting with animal care, socialization, and adoption events.",
+      "category": "Animal Welfare",
+      "impact_score": 20,
+      "required_skills": [13],
+      "start_date": "2024-05-25",
+      "end_date": "2024-06-25",
+      "total_hours": 15,
+      "images": "opportunity_images/opp13.jpeg",
+      "location": "Animal shelter facility",
+      "disability_accessibility": [],
+      "latitude": 51.25224864067674,
+      "longitude": -0.5731067614329269
+    },
+    {
+      "organization": 12,
+      "title": "Pet Adoption Event",
+      "description": "Help organize and facilitate a pet adoption event to find loving homes for animals in need.",
+      "category": "Animal Welfare",
+      "impact_score": 15,
+      "required_skills": [13],
+      "start_date": "2024-06-10",
+      "end_date": "2024-06-10",
+      "total_hours": 6,
+      "images": "opportunity_images/opp14.jpg",
+      "location": "Local pet store",
+      "disability_accessibility": [],
+      "latitude": 51.25224864067674,
+      "longitude": -0.5731067614329269
+    },
+    {
+      "organization": 6,
+      "title": "Community Soup Kitchen",
+      "description": "Volunteer at a community soup kitchen, preparing and serving meals to individuals experiencing food insecurity.",
+      "category": "Social Services",
+      "impact_score": 15,
+      "required_skills": [2],
+      "start_date": "2024-05-30",
+      "end_date": "2024-05-30",
+      "total_hours": 5,
+      "images": "opportunity_images/opp15.jpg",
+      "location": "Community kitchen",
+      "disability_accessibility": [],
+      "latitude": 51.23949782946825,
+      "longitude": -0.5732311504211163
+    },
+    {
+      "organization": 11,
+      "title": "Youth Mentorship Program",
+      "description": "Mentor and support youth in achieving their goals through guidance and positive role modeling.",
+      "category": "Social Services",
+      "impact_score": 25,
+      "required_skills": [5],
+      "start_date": "2024-06-05",
+      "end_date": "2024-07-05",
+      "total_hours": 20,
+      "images": "opportunity_images/opp16.jpeg",
+      "location": "Local community center",
+      "disability_accessibility": [],
+      "latitude": 51.23228319466516,
+      "longitude": -0.5758130158398249
+    },
+    {
+      "organization": 12,
+      "title": "Adaptive Sports Camp",
+      "description": "Assist with an adaptive sports camp for individuals with disabilities, promoting inclusivity and physical activity.",
+      "category": "Sports and Recreation",
+      "impact_score": 20,
+      "required_skills": [13],
+      "start_date": "2024-06-15",
+      "end_date": "2024-06-20",
+      "total_hours": 25,
+      "images": "opportunity_images/opp17.jpeg",
+      "location": "Sports complex",
+      "disability_accessibility": [],
+      "latitude": 51.2303032382251,
+      "longitude": -0.5726326564792595
+    },
+    {
+      "organization": 12,
+      "title": "Community Fitness Event",
+      "description": "Volunteer at a community fitness event, encouraging physical activity and healthy lifestyles.",
+      "category": "Sports and Recreation",
+      "impact_score": 10,
+      "required_skills": [13],
+      "start_date": "2024-07-01",
+      "end_date": "2024-07-01",
+      "total_hours": 4,
+      "images": "opportunity_images/opp18.jpg",
+      "location": "Local park",
+      "disability_accessibility": [],
+      "latitude": 51.23122037345799,
+      "longitude": -0.5595690605407011
+    }
+],
+  "Interest": [
+    {
+      "name": "Environmental"
+    },
+    {
+      "name": "Educational"
+    },
+    {
+      "name": "Health Care"
+    },
+    {
+      "name": "Animal Welfare"
+    },
+    {
+      "name": "Social Services"
+    },
+    {
+      "name": "Sports and Recreation"
+    },
+    {
+      "name": "Disability Services"
+    },
+    {
+      "name": "Faith Based"
+    }
+
+  ],
+
+  "Skill": [
+    {
+      "name": "Communication"
+    },
+    {
+      "name": "Teaching"
+    },
+    {
+      "name": "Teamwork"
+    },
+    {
+      "name": "Problem-solving"
+    },
+    {
+      "name": "Leadership"
+    },
+    {
+      "name": "Creativity"
+    },
+    {
+      "name": "Adaptability"
+    },
+    {
+      "name": "Organization"
+    },
+    {
+      "name": "Time Management"
+    },
+    {
+      "name": "Programming"
+    },
+    {
+      "name": "Videography"
+    },
+    {
+      "name": "Note Taking"
+    },
+    {
+      "name": "Gardening"
+    },
+    {
+      "name": "Photography"
+    }
+
+  ],
+
+  "Review": [
+    {
+      "organization": 3,
+      "user": 1,
+      "rating": 4,
+      "comment": "Great organization! Had a wonderful experience volunteering with them."
+    },
+    {
+      "organization": 4,
+      "user": 2,
+      "rating": 5,
+      "comment": "Fantastic tutoring program! Really making a difference in the community."
+    },
+    {
+      "organization": 5,
+      "user": 3,
+      "rating": 5,
+      "comment": "The wildlife conservation expedition was an amazing experience! Highly recommend joining."
+    },
+    {
+      "organization": 6,
+      "user": 4,
+      "rating": 4,
+      "comment": "Volunteering at the meal packaging event was fulfilling. Great team and impactful work."
+    },
+    {
+      "organization": 7,
+      "user": 1,
+      "rating": 4,
+      "comment": "The free health clinic volunteer opportunity was eye-opening. Glad to contribute to healthcare access."
+    },
+    {
+      "organization": 8,
+      "user": 2,
+      "rating": 5,
+      "comment": "Assisting with the literacy program was rewarding. Seeing the progress in students' reading skills was heartwarming."
+    },
+    {
+      "organization": 9,
+      "user": 3,
+      "rating": 4,
+      "comment": "The solar panel installation workshop was educational and engaging. Learned a lot about renewable energy."
+    },
+    {
+      "organization": 10,
+      "user": 4,
+      "rating": 5,
+      "comment": "Volunteering at the peacebuilding conference was inspiring. Promoting dialogue and understanding is crucial for peace."
+    }
+  ],
+  "Disability": [
+    {
+        "name": "Mobility Impairment"
+    },
+    {
+        "name": "Visual Impairment"
+    },
+    {
+        "name": "Hearing Impairment"
+    },
+    {
+        "name": "Intellectual Disabilities "
+    },
+    {
+        "name": "Learning Disabilities"
+    },
+    {
+        "name": "Speech Disorders"
+    },
+    {
+        "name": "Chronic Pain Conditions "
+    },
+    {
+        "name": "Neurological Conditions"
+    }
+]
+
+}
